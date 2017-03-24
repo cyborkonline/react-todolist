@@ -19,13 +19,14 @@ export default class App extends React.Component {
   render() {
     return (
      <div className="mainApp">
-        <h1>React ToDo App
+        <h1>A list of To Dos
         <ToDoApp
                     todos={this.state.todos}
                     toggleTodo={this.toggleTodo.bind(this)}/>
       </h1>
 
     </div>
+    <h6>Developed by <a href="https://cyborkonline.github.io">David Morais</a>
     );
   }
   toggleTodo(toDoItem){

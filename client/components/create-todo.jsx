@@ -15,7 +15,7 @@ export default class CreateTodo extends React.Component{
     return (
       <form onSubmit={this.handleCreate.bind(this)}>
         <input type='text' placeholder="What to do ?" ref="createInput"/>
-      <button>Create new ToDo</button>
+      <button>Create something To Do</button>
     {this.renderError()}
       </form>
     )
