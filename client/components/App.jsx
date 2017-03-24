@@ -2,7 +2,7 @@
 import React from 'react';
 const todos=[{"toDoItem":"Finish React Projects","completed":true},
 {"toDoItem":"Update Graphics for websites","completed":false}]
-import CreateTodo from './create-todo'
+import CreateTodo from './create-todo.jsx'
 import _ from 'lodash'
 
 
@@ -18,7 +18,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-     <div style={{textAlign: 'center'}}>
+     <div className="mainApp">
         <h1>React ToDo App
         <ToDoApp
                     todos={this.state.todos}
@@ -66,7 +66,6 @@ class ToDoApp extends React.Component {
               <thead>
                 <tr>
                   <th>Tasks</th>
-                <th>Completion</th>
                 </tr>
               </thead>
               <tbody>
@@ -138,7 +137,7 @@ renderButtons(){
 //function to check if the task is completed or not
 renderTodos(){
   const {toDoItem, completed} = this.props;
-  const todoStyle = { color: completed ? 'green' : 'red',
+  const todoStyle = { background: completed ? '#69f0ae' : '#ff6e40',
     cursor: 'pointer'}
     if (this.state.isEditing)  {
       return( <td><form onSubmit={this.onSaveClick.bind(this)}>
