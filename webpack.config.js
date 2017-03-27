@@ -5,39 +5,19 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body'
 })
-const ExtractTextPlugin= require('extract-text-webpack-plugin')
 
 module.exports = {
-  entry: [
-      './client/index'
-    ],
-
-    output: {
-      path: path.join(__dirname, '/client'),
-      publicPath: '/',
-      filename: 'bundle.js'
-    },
+  entry: './client/index.js',
+  output: {
+    path: path.resolve('dist'),
+    filename: 'index_bundle.js'
+  },
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ ,     query: {
-        presets: ["es2015", "react"]
-    }},
-      {   test: /\.(sass|scss)$/,        use: ExtractTextPlugin.extract({
-				fallback: "style-loader",
-				use: {
-					loader: "css-loader", "sass-loader",
-					options: {
-						sourceMap: true
-					}
-				},
-				publicPath: "../"
-			})      }
+      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+      {   test: /\.(sass|scss)$/,        use: [          'style-loader',          'css-loader',          'sass-loader'        ]      }
     ]
   },
-plugins: [HtmlWebpackPluginConfig,		new ExtractTextPlugin({
-			filename: "css/[name].css?[hash]-[chunkhash]-[contenthash]-[name]",
-			disable: false,
-			allChunks: true
-		})]
+plugins: [HtmlWebpackPluginConfig]
 }
