@@ -25,8 +25,8 @@ export default class App extends React.Component {
                     toggleTodo={this.toggleTodo.bind(this)}/>
       </h1>
 
-    </div>
-    <h6>Developed by <a href="https://cyborkonline.github.io">David Morais</a>
+      <h6>Developed by <a href="https://cyborkonline.github.io">David Morais</a></h6>
+    </div >
     );
   }
   toggleTodo(toDoItem){
