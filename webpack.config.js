@@ -5,19 +5,28 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body'
 })
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve('dist'),
-    filename: 'index_bundle.js'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      {   test: /\.(sass|scss)$/,        use: [  'style-loader',          'css-loader',          'sass-loader'        ]      }
+      {   test: /\.(sass|scss)$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+        use: ['css-loader', 'sass-loader']
+        })
+      }
     ]
   },
-plugins: [HtmlWebpackPluginConfig]
+plugins: [HtmlWebpackPluginConfig,   new webpack.DefinePlugin({
+    "process.env": {
+      "NODE_ENV": JSON.stringify("production")
+    }
+  }), new ExtractTextPlugin('style.css')]
 }
