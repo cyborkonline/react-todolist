@@ -8,12 +8,12 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "css-loader": "^0.27.3",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "webpack": "^2.2.0"
   },
   "devDependencies": {
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.16.0",
     "react-scripts": "0.9.4",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0",
